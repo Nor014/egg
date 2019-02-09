@@ -57,26 +57,34 @@
 
     let visibleDiv = document.getElementsByClassName("secret")[0];
     const secretCode = ['KeyY', 'KeyT', 'KeyN', 'KeyJ', 'KeyK', 'KeyJ', 'KeyU', 'KeyB', 'KeyZ'];
-    let pressKey = [];
+    //let pressKey = [];
+    let counter = 0;
 
     document.addEventListener('keydown', function secret() {
-      if (pressKey.length < secretCode.length) pressKey.push(event.code)
-      console.log(secretCode, pressKey);
+      // if (pressKey.length < secretCode.length) pressKey.push(event.code)
+      // console.log(secretCode, pressKey);
+      if (event.code === secretCode[counter]) {
+        counter ++;
+      } else if (!event.code === secretCode[counter]) {
+        counter = 0;
+      }
+
+      if (counter === secretCode.length) visibleDiv.classList.add('visible');
     })
 
-    document.addEventListener('keydown', function secret() {
-      if (pressKey.length === secretCode.length) {
+    // document.addEventListener('keydown', function secret() {
+    //  if (pressKey.length === secretCode.length) {
 
-        for (let i = 0; i < secretCode.length; i++) {
-          if (pressKey[i] !== secretCode[i]) {
-            pressKey = [];
-            return
-          }
-        }
-        visibleDiv.classList.add('visible');
-      }
-    }
-    )
+    //     for (let i = 0; i < secretCode.length; i++) {
+    //       if (pressKey[i] !== secretCode[i]) {
+    //         pressKey = [];
+    //         return
+    //       }
+    //    }
+    //     visibleDiv.classList.add('visible');
+    //   }
+    // }
+    // )
 
   </script>
 </body>
